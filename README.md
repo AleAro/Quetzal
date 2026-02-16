@@ -26,7 +26,7 @@
   <a href="https://github.com/ronuma/legends"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://legends-gilt.vercel.app/">View Deployed Game</a>
+    <a href="https://AleAro.github.io/Quetzal/Web/index.html">View Deployed Game</a>
     <br />
     <a href="https://bit.ly/QuetzalVideoDemo123">View Game Demo</a>
     <br />
@@ -196,7 +196,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 -  Gilberto Echeverría Furió
 -  Octavio Navarro Hinojosa
 
-Project Link: [https://github.com/ronuma/legends](https://github.com/ronuma/legends)
+Project Link: [https://github.com/AleAro/Quetzal](https://github.com/AleAro/Quetzal)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
