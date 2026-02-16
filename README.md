@@ -23,7 +23,6 @@
   </a>
 
   <p>
-  <a href="https://github.com/ronuma/legends"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://AleAro.github.io/Quetzal/Web/index.html">View Deployed Game</a>
