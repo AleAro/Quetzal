@@ -15,7 +15,7 @@
 <h3 align="center">Quetzal</h3>
 
   <p align="center">
-    RPG Game development for ITESM course TC2005B
+    RPG Game development
     <br />
     </p>
      <a href="https://github.com/ronuma/legends">
