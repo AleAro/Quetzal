@@ -4567,6 +4567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _identifier: Walls
+  _doc: 
   _type: 2
   _scale: 1
 --- !u!156049354 &562227824069392440
@@ -8610,6 +8611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _identifier: Background
+  _doc: 
   _type: 0
   _scale: 1
 --- !u!156049354 &2002100124261118314
