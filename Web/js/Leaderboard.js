@@ -1,7 +1,7 @@
 async function fetchTopPlayers() {
   try {
     const leaderboard_response = await fetch(
-      "https://quetzal-api.glitch.me/stats/top10",
+      `${API_BASE_URL}/stats/top10`,
       {
         method: "GET",
       }

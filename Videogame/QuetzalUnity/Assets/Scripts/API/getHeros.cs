@@ -43,7 +43,7 @@ public class HeroList
 public class getHeros : MonoBehaviour
 {
     
-    string url = "https://quetzal-api.glitch.me"; // The URL of the API
+    string url = APIConfig.BaseUrl; // The URL of the API
     string getUsersEP = "/characters/heroes"; // The endpoint to get the users
     [SerializeField] Text errorText;
 

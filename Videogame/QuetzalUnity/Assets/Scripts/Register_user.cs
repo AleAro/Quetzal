@@ -45,7 +45,7 @@ public class Register_user : MonoBehaviour {
 
     IEnumerator PostRequest(string email, string username) {
     // Start a coroutine to send a POST request to the API endpoint
-        string url = "https://quetzal-api.glitch.me/users/add";
+        string url = APIConfig.BaseUrl + "/users/add";
 
         if (email == "" || username == "") {
             responseText.text = "Please fill out all fields.";

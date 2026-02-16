@@ -29,7 +29,7 @@ public class Login_user : MonoBehaviour
 
     IEnumerator GetRequest(string email) // Async function to get the users from the API
     {
-        string url = "https://quetzal-api.glitch.me/users/" + email;
+        string url = APIConfig.BaseUrl + "/users/" + email;
 
         if (email == null || email == "") // If the email is empty, return
         {

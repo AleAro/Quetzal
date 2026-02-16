@@ -9,7 +9,7 @@ import {
 
 const router = Router();
 
-router.get("/NPCs", async (req, res) => {
+router.get("/npcs", async (req, res) => {
    // needs to get all NPCs and their dialogues
    try {
       const data = await getNPCs();

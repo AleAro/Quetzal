@@ -1,12 +1,22 @@
-DROP SCHEMA IF EXISTS quetzal;
-
--- First we create the database
-CREATE SCHEMA quetzal;
-
--- Use the new schema
+-- 1. Switch to the database you just created
 USE quetzal;
 
--- Create the tables
+-- 2. Cleanup existing tables in correct order
+SET FOREIGN_KEY_CHECKS = 0;
+DROP VIEW IF EXISTS hero_sessions;
+DROP VIEW IF EXISTS top10_view;
+DROP VIEW IF EXISTS stats_view;
+DROP VIEW IF EXISTS sorted_items_view;
+DROP TABLE IF EXISTS Players;
+DROP TABLE IF EXISTS Sessions;
+DROP TABLE IF EXISTS Heroes;
+DROP TABLE IF EXISTS Items;
+DROP TABLE IF EXISTS NPCs;
+DROP TABLE IF EXISTS Dialogs;
+DROP TABLE IF EXISTS Enemies;
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- 3. Create Tables exactly as in your original script
 CREATE TABLE Players (
     email VARCHAR(255) PRIMARY KEY NOT NULL UNIQUE,
     user_name VARCHAR(20) NOT NULL,
@@ -16,23 +26,20 @@ CREATE TABLE Players (
     slot_3 INT
 );
 
-CREATE INDEX idx_players_user_name ON Players(user_name);
-
--- Add Heroes table
 CREATE TABLE Heroes (
-	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL UNIQUE,
-	hero_name VARCHAR(20),
-	health FLOAT,
-	mana FLOAT,
-	damage FLOAT,
-	defense FLOAT,
-	speed FLOAT
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL UNIQUE,
+    hero_name VARCHAR(20),
+    health FLOAT,
+    mana FLOAT,
+    damage FLOAT,
+    defense FLOAT,
+    speed FLOAT
 );
 
 CREATE TABLE Sessions (
     session_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL,
-    hero_id INT, -- Add hero_id column
+    hero_id INT,
     damage FLOAT NOT NULL,
     health FLOAT NOT NULL,
     mana FLOAT NOT NULL,
@@ -45,11 +52,8 @@ CREATE TABLE Sessions (
     CONSTRAINT chk_defense_player_range CHECK (defense >= 0 AND defense <= 250),
     CONSTRAINT chk_damage_player_range CHECK (damage >= 0 AND damage <= 125),
     CONSTRAINT chk_speed_player_range CHECK (speed >= 1 AND speed <= 8),
-    FOREIGN KEY (hero_id) REFERENCES Heroes(id) -- Add foreign key constraint for hero_id
+    FOREIGN KEY (hero_id) REFERENCES Heroes(id)
 );
-
-CREATE INDEX idx_sessions_player_id ON Sessions(email);
-CREATE INDEX idx_sessions_finished ON Sessions(finished);
 
 -- Add foreign key constraints to Players table with cascading behavior
 ALTER TABLE Players
@@ -73,8 +77,6 @@ CREATE TABLE Items (
     CONSTRAINT chk_speed_item_range CHECK (speed_change >= -2 AND speed_change <= 2)
 );
 
-CREATE INDEX idx_items_name ON Items(name);
-
 CREATE TABLE Dialogs (
     dialog_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL UNIQUE,
     text VARCHAR(255) NOT NULL
@@ -87,8 +89,6 @@ CREATE TABLE NPCs (
     FOREIGN KEY (dialog_id) REFERENCES Dialogs (dialog_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE INDEX idx_npcs_dialog_id ON NPCs(dialog_id);
-
 CREATE TABLE Enemies (
     enemy_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL UNIQUE,
     health FLOAT NOT NULL,
@@ -97,11 +97,18 @@ CREATE TABLE Enemies (
     name VARCHAR(20) NOT NULL,
     CONSTRAINT chk_health_enemy_range CHECK (health >= 0 AND health <= 2000),
     CONSTRAINT chk_damage_enemy_range CHECK (damage >= 0 AND damage <= 150),
-CONSTRAINT chk_speed_enemy_range CHECK (speed >= 1 AND speed <= 7)
+    CONSTRAINT chk_speed_enemy_range CHECK (speed >= 1 AND speed <= 7)
 );
 
+-- 4. Create Indexes
+CREATE INDEX idx_players_user_name ON Players(user_name);
+CREATE INDEX idx_sessions_player_id ON Sessions(email);
+CREATE INDEX idx_sessions_finished ON Sessions(finished);
+CREATE INDEX idx_items_name ON Items(name);
+CREATE INDEX idx_npcs_dialog_id ON NPCs(dialog_id);
 CREATE INDEX idx_enemies_name ON Enemies(name);
 
+-- 5. Create Views (exactly as provided)
 CREATE VIEW sorted_items_view AS
 SELECT item_id, name, times_chosen
 FROM Items
@@ -136,6 +143,11 @@ CREATE VIEW hero_sessions AS
 SELECT
     Sessions.*,
     Heroes.hero_name
-FROM
-    quetzal.Sessions
-INNER JOIN quetzal.Heroes ON Sessions.hero_id = Heroes.id;
+FROM Sessions
+INNER JOIN Heroes ON Sessions.hero_id = Heroes.id;
+
+-- 6. Insert Core Seed Data
+INSERT INTO Heroes (hero_name, health, mana, damage, defense, speed) VALUES 
+('Quetzalcoatl', 100, 50, 20, 10, 5),
+('Xolotl', 120, 30, 15, 15, 4),
+('Tezcatlipoca', 80, 70, 25, 5, 6);

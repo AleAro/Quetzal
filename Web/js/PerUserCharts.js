@@ -42,7 +42,7 @@ userStatsBtn.addEventListener("click", async () => {
    if (email) {
       try {
          const response = await fetch(
-            `https://quetzal-api.glitch.me/stats/runs/${email}`
+            `${API_BASE_URL}/stats/runs/${email}`
          )
 
          if (!response.ok) {

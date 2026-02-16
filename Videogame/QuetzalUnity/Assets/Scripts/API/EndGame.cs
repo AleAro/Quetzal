@@ -10,7 +10,7 @@ using UnityEngine;
 // it is attached to the bossManager object
 public class EndGame : MonoBehaviour 
 {
-    private string apiUrl = "https://quetzal-api.glitch.me/users/endSession";
+    private string apiUrl = APIConfig.BaseUrl + "/users/endSession";
     public int sessionId; // the session_id of the game `
     public bool bossIsDead = false; // the boss is dead
     public bool bossDone = false; // bollean that prevents that the API is called more than once

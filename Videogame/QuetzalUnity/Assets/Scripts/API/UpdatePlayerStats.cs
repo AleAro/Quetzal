@@ -18,7 +18,7 @@ public class UpdateUser
 public class UpdatePlayerStats : MonoBehaviour
 {
     private string createUserEP = "/users/selectItem";
-    private string url = "https://quetzal-api.glitch.me";
+    private string url = APIConfig.BaseUrl;
 
     public float health_API;
     public float mana_API;

@@ -14,7 +14,7 @@ public class ClearSlotObject
 public class ClearSlot : MonoBehaviour
 {
     private string createUserEP = "/users/clearSlot"; // The endpoint to create a new user
-    private string url = "https://quetzal-api.glitch.me"; // The URL of the API
+    private string url = APIConfig.BaseUrl; // The URL of the API
 
     public int session_id_API; // the session_id to be cleared
 

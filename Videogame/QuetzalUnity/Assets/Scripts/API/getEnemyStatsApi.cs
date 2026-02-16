@@ -34,7 +34,7 @@ public class EnemyStatsApiList
 public class getEnemyStatsApi : MonoBehaviour
 {
     
-    string url = "https://quetzal-api.glitch.me"; // The URL of the API
+    string url = APIConfig.BaseUrl; // The URL of the API
     string getUsersEP = "/characters/enemies"; // The endpoint to get the users
     [SerializeField] Text errorText;
 

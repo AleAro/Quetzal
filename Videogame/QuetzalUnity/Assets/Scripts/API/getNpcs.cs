@@ -39,7 +39,7 @@ public class NpcList
 public class getNpcs : MonoBehaviour
 {
     
-    string url = "https://quetzal-api.glitch.me"; // The URL of the API
+    string url = APIConfig.BaseUrl; // The URL of the API
     string getUsersEP = "/characters/npcs"; // The endpoint to get the users
     [SerializeField] Text errorText;
 

@@ -26,7 +26,7 @@ random_color = () => {
 
 async function fetchStats() {
   try {
-    const stats_response = await fetch("https://quetzal-api.glitch.me/stats", {
+    const stats_response = await fetch(`${API_BASE_URL}/stats`, {
       method: "GET",
     });
 

@@ -29,7 +29,7 @@ public class SessionResponse
 public class CreateNewPlayer : MonoBehaviour
 {
     private string createUserEP = "/users/createSession";
-    private string url = "https://quetzal-api.glitch.me";
+    private string url = APIConfig.BaseUrl;
     public string email;
     public int hero_id;
     public int memory_slot;
