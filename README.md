@@ -64,7 +64,7 @@
 
 ## About The Project
 
-This project is a RPG game developed for the course TC2005B at ITESM.
+This project is a RPG game
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
