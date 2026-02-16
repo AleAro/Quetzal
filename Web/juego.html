@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="./styles/css/juego.css" type="text/css" rel="stylesheet" />
-    <title>Unity WebGL Player | Pruebas Juego</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
-    <link rel="stylesheet" href="TemplateData/style.css" />
+    <title>Jugar | Quetzal</title>
+    <link rel="shortcut icon" href="./play/index/TemplateData/favicon.ico" />
+    <link rel="stylesheet" href="./play/index/TemplateData/style.css" />
     <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
@@ -14,6 +14,23 @@
   ></script>
   </head>
   <body>
+    <style>
+      body {
+        background-color: #1a1a1a;
+        overflow-x: hidden;
+      }
+      #unity-container {
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      #unity-logo {
+        display: none;
+      }
+      #unity-footer {
+        margin-top: 0.5rem;
+      }
+    </style>
     <nav class="navbar navbar-dark bg-transparent fixed-top text-start">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"
@@ -82,7 +99,7 @@
       <div id="unity-container" class="unity-desktop mt-4">
         <canvas class="shadow-lg" id="unity-canvas" width="960" height="600"></canvas>
         <div id="unity-loading-bar">
-          <div id="unity-logo"></div>
+          <div id="unity-logo" style="display: none;"></div>
           <div id="unity-progress-bar-empty">
             <div id="unity-progress-bar-full"></div>
           </div>
@@ -128,15 +145,16 @@
         updateBannerVisibility();
       }
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Quetzal.loader.js";
+      // Point to the actual subfolder Unity created (Web/play/index/)
+      var buildUrl = "./play/index/Build";
+      var loaderUrl = buildUrl + "/index.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Quetzal.data",
-        frameworkUrl: buildUrl + "/Quetzal.framework.js",
-        codeUrl: buildUrl + "/Quetzal.wasm",
-        streamingAssetsUrl: "StreamingAssets",
+        dataUrl: buildUrl + "/index.data",
+        frameworkUrl: buildUrl + "/index.framework.js",
+        codeUrl: buildUrl + "/index.wasm",
+        streamingAssetsUrl: "./play/index/StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "Pruebas Juego",
+        productName: "Quetzal",
         productVersion: "1.0",
         showBanner: unityShowBanner,
       };
